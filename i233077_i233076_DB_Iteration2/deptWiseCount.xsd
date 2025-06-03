@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="deptWiseCount" targetNamespace="http://tempuri.org/deptWiseCount.xsd" xmlns:mstns="http://tempuri.org/deptWiseCount.xsd" xmlns="http://tempuri.org/deptWiseCount.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="JOBFAIRConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="JOBFAIRConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Project.Properties.Settings.GlobalReference.Default.JOBFAIRConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ACADEMIC_RECORDTableAdapter" GeneratorDataComponentClassName="ACADEMIC_RECORDTableAdapter" Name="ACADEMIC_RECORD" UserDataComponentName="ACADEMIC_RECORDTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="JOBFAIRConnectionString (Settings)" DbObjectName="JOBFAIR.dbo.ACADEMIC_RECORD" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT degreeProgram, COUNT(*) AS RegistrationCount
+FROM ACADEMIC_RECORD
+GROUP BY degreeProgram</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="degreeProgram" DataSetColumn="degreeProgram" />
+              <Mapping SourceColumn="RegistrationCount" DataSetColumn="RegistrationCount" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="deptWiseCount" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="deptWiseCount" msprop:Generator_DataSetName="deptWiseCount">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ACADEMIC_RECORD" msprop:Generator_RowEvHandlerName="ACADEMIC_RECORDRowChangeEventHandler" msprop:Generator_RowDeletedName="ACADEMIC_RECORDRowDeleted" msprop:Generator_RowDeletingName="ACADEMIC_RECORDRowDeleting" msprop:Generator_RowEvArgName="ACADEMIC_RECORDRowChangeEvent" msprop:Generator_TablePropName="ACADEMIC_RECORD" msprop:Generator_RowChangedName="ACADEMIC_RECORDRowChanged" msprop:Generator_RowChangingName="ACADEMIC_RECORDRowChanging" msprop:Generator_TableClassName="ACADEMIC_RECORDDataTable" msprop:Generator_RowClassName="ACADEMIC_RECORDRow" msprop:Generator_TableVarName="tableACADEMIC_RECORD" msprop:Generator_UserTableName="ACADEMIC_RECORD">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="degreeProgram" msprop:Generator_ColumnPropNameInRow="degreeProgram" msprop:Generator_ColumnPropNameInTable="degreeProgramColumn" msprop:Generator_ColumnVarNameInTable="columndegreeProgram" msprop:Generator_UserColumnName="degreeProgram">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RegistrationCount" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="RegistrationCount" msprop:Generator_ColumnPropNameInTable="RegistrationCountColumn" msprop:Generator_ColumnVarNameInTable="columnRegistrationCount" msprop:Generator_UserColumnName="RegistrationCount" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

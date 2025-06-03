@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RatingsForRecruiters" targetNamespace="http://tempuri.org/RatingsForRecruiters.xsd" xmlns:mstns="http://tempuri.org/RatingsForRecruiters.xsd" xmlns="http://tempuri.org/RatingsForRecruiters.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="JOBFAIRConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="JOBFAIRConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Project.Properties.Settings.GlobalReference.Default.JOBFAIRConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RatingsForRecruitersTableAdapter" GeneratorDataComponentClassName="RatingsForRecruitersTableAdapter" Name="RatingsForRecruiters" UserDataComponentName="RatingsForRecruitersTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="JOBFAIRConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT 
+    R.recruiterId,
+    U.name AS RecruiterName,
+    AVG(V.rating) AS AverageRating,
+    COUNT(V.reviewId) AS TotalReviews
+FROM 
+    REVIEW V
+JOIN 
+    INTERVIEW I ON V.interviewId = I.interviewId
+JOIN 
+    RECRUITER R ON I.recruiterId = R.recruiterId
+JOIN 
+    USERS U ON R.userId = U.userId
+GROUP BY 
+    R.recruiterId, U.name
+ORDER BY 
+    AverageRating DESC;
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="recruiterId" DataSetColumn="recruiterId" />
+              <Mapping SourceColumn="RecruiterName" DataSetColumn="RecruiterName" />
+              <Mapping SourceColumn="AverageRating" DataSetColumn="AverageRating" />
+              <Mapping SourceColumn="TotalReviews" DataSetColumn="TotalReviews" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="RatingsForRecruiters" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="RatingsForRecruiters" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="RatingsForRecruiters">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RatingsForRecruiters" msprop:Generator_RowClassName="RatingsForRecruitersRow" msprop:Generator_RowEvHandlerName="RatingsForRecruitersRowChangeEventHandler" msprop:Generator_RowDeletedName="RatingsForRecruitersRowDeleted" msprop:Generator_RowDeletingName="RatingsForRecruitersRowDeleting" msprop:Generator_RowEvArgName="RatingsForRecruitersRowChangeEvent" msprop:Generator_TablePropName="_RatingsForRecruiters" msprop:Generator_RowChangedName="RatingsForRecruitersRowChanged" msprop:Generator_UserTableName="RatingsForRecruiters" msprop:Generator_RowChangingName="RatingsForRecruitersRowChanging" msprop:Generator_TableClassName="RatingsForRecruitersDataTable" msprop:Generator_TableVarName="tableRatingsForRecruiters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="recruiterId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="recruiterId" msprop:Generator_ColumnPropNameInTable="recruiterIdColumn" msprop:Generator_ColumnPropNameInRow="recruiterId" msprop:Generator_ColumnVarNameInTable="columnrecruiterId" type="xs:int" />
+              <xs:element name="RecruiterName" msprop:Generator_UserColumnName="RecruiterName" msprop:Generator_ColumnPropNameInTable="RecruiterNameColumn" msprop:Generator_ColumnPropNameInRow="RecruiterName" msprop:Generator_ColumnVarNameInTable="columnRecruiterName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AverageRating" msdata:ReadOnly="true" msprop:Generator_UserColumnName="AverageRating" msprop:Generator_ColumnPropNameInTable="AverageRatingColumn" msprop:Generator_ColumnPropNameInRow="AverageRating" msprop:Generator_ColumnVarNameInTable="columnAverageRating" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TotalReviews" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TotalReviews" msprop:Generator_ColumnPropNameInTable="TotalReviewsColumn" msprop:Generator_ColumnPropNameInRow="TotalReviews" msprop:Generator_ColumnVarNameInTable="columnTotalReviews" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:RatingsForRecruiters" />
+      <xs:field xpath="mstns:recruiterId" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

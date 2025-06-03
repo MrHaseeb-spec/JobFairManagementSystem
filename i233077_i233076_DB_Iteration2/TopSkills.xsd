@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TopSkills" targetNamespace="http://tempuri.org/TopSkills.xsd" xmlns:mstns="http://tempuri.org/TopSkills.xsd" xmlns="http://tempuri.org/TopSkills.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="JOBFAIRConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="JOBFAIRConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Project.Properties.Settings.GlobalReference.Default.JOBFAIRConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SKILLTableAdapter" GeneratorDataComponentClassName="SKILLTableAdapter" Name="SKILL" UserDataComponentName="SKILLTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="JOBFAIRConnectionString (Settings)" DbObjectName="JOBFAIR.dbo.SKILL" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT TOP 10
+    title AS SkillTitle,
+    COUNT(*) AS Frequency
+FROM SKILL
+GROUP BY title
+ORDER BY Frequency DESC;</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="SkillTitle" DataSetColumn="SkillTitle" />
+              <Mapping SourceColumn="Frequency" DataSetColumn="Frequency" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TopSkills" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="TopSkills" msprop:Generator_DataSetName="TopSkills">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SKILL" msprop:Generator_RowEvHandlerName="SKILLRowChangeEventHandler" msprop:Generator_RowDeletedName="SKILLRowDeleted" msprop:Generator_RowDeletingName="SKILLRowDeleting" msprop:Generator_RowEvArgName="SKILLRowChangeEvent" msprop:Generator_TablePropName="SKILL" msprop:Generator_RowChangedName="SKILLRowChanged" msprop:Generator_RowChangingName="SKILLRowChanging" msprop:Generator_TableClassName="SKILLDataTable" msprop:Generator_RowClassName="SKILLRow" msprop:Generator_TableVarName="tableSKILL" msprop:Generator_UserTableName="SKILL">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SkillTitle" msprop:Generator_ColumnPropNameInRow="SkillTitle" msprop:Generator_ColumnPropNameInTable="SkillTitleColumn" msprop:Generator_ColumnVarNameInTable="columnSkillTitle" msprop:Generator_UserColumnName="SkillTitle">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Frequency" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Frequency" msprop:Generator_ColumnPropNameInTable="FrequencyColumn" msprop:Generator_ColumnVarNameInTable="columnFrequency" msprop:Generator_UserColumnName="Frequency" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BoothCoordinatorReport" targetNamespace="http://tempuri.org/BoothCoordinatorReport.xsd" xmlns:mstns="http://tempuri.org/BoothCoordinatorReport.xsd" xmlns="http://tempuri.org/BoothCoordinatorReport.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="JOBFAIRConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="JOBFAIRConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Project.Properties.Settings.GlobalReference.Default.JOBFAIRConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VisitorsTableAdapter" GeneratorDataComponentClassName="VisitorsTableAdapter" Name="Visitors" UserDataComponentName="VisitorsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="JOBFAIRConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT 
+    C.name,
+    B.boothId,
+    B.location,
+    B.studentVisited
+FROM 
+    BOOTH B
+JOIN 
+    COMPANY C ON B.companyId = C.companyId
+ORDER BY 
+    C.name, B.boothId;</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="boothId" DataSetColumn="boothId" />
+              <Mapping SourceColumn="location" DataSetColumn="location" />
+              <Mapping SourceColumn="studentVisited" DataSetColumn="studentVisited" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="BoothCoordinatorReport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="BoothCoordinatorReport" msprop:Generator_DataSetName="BoothCoordinatorReport">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Visitors" msprop:Generator_RowEvHandlerName="VisitorsRowChangeEventHandler" msprop:Generator_RowDeletedName="VisitorsRowDeleted" msprop:Generator_RowDeletingName="VisitorsRowDeleting" msprop:Generator_RowEvArgName="VisitorsRowChangeEvent" msprop:Generator_TablePropName="Visitors" msprop:Generator_RowChangedName="VisitorsRowChanged" msprop:Generator_RowChangingName="VisitorsRowChanging" msprop:Generator_TableClassName="VisitorsDataTable" msprop:Generator_RowClassName="VisitorsRow" msprop:Generator_TableVarName="tableVisitors" msprop:Generator_UserTableName="Visitors">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_UserColumnName="name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="boothId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="boothId" msprop:Generator_ColumnPropNameInTable="boothIdColumn" msprop:Generator_ColumnVarNameInTable="columnboothId" msprop:Generator_UserColumnName="boothId" type="xs:int" />
+              <xs:element name="location" msprop:Generator_ColumnPropNameInRow="location" msprop:Generator_ColumnPropNameInTable="locationColumn" msprop:Generator_ColumnVarNameInTable="columnlocation" msprop:Generator_UserColumnName="location">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="studentVisited" msprop:Generator_ColumnPropNameInRow="studentVisited" msprop:Generator_ColumnPropNameInTable="studentVisitedColumn" msprop:Generator_ColumnVarNameInTable="columnstudentVisited" msprop:Generator_UserColumnName="studentVisited" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Visitors" />
+      <xs:field xpath="mstns:boothId" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

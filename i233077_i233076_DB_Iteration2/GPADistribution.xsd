@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="GPADistribution" targetNamespace="http://tempuri.org/GPADistribution.xsd" xmlns:mstns="http://tempuri.org/GPADistribution.xsd" xmlns="http://tempuri.org/GPADistribution.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="JOBFAIRConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="JOBFAIRConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Project.Properties.Settings.GlobalReference.Default.JOBFAIRConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GPADistributionTableAdapter" GeneratorDataComponentClassName="GPADistributionTableAdapter" Name="GPADistribution" UserDataComponentName="GPADistributionTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="JOBFAIRConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT 
+  CASE 
+    WHEN gpa &gt;= 0.0 AND gpa &lt; 1.0 THEN '0.0 - 0.9'
+    WHEN gpa &gt;= 1.0 AND gpa &lt; 2.0 THEN '1.0 - 1.9'
+    WHEN gpa &gt;= 2.0 AND gpa &lt; 3.0 THEN '2.0 - 2.9'
+    WHEN gpa &gt;= 3.0 AND gpa &lt; 3.5 THEN '3.0 - 3.4'
+    WHEN gpa &gt;= 3.5 AND gpa &lt;= 4.0 THEN '3.5 - 4.0'
+  END AS GPABucket,
+  COUNT(*) AS StudentCount
+FROM ACADEMIC_RECORD
+GROUP BY 
+  CASE 
+    WHEN gpa &gt;= 0.0 AND gpa &lt; 1.0 THEN '0.0 - 0.9'
+    WHEN gpa &gt;= 1.0 AND gpa &lt; 2.0 THEN '1.0 - 1.9'
+    WHEN gpa &gt;= 2.0 AND gpa &lt; 3.0 THEN '2.0 - 2.9'
+    WHEN gpa &gt;= 3.0 AND gpa &lt; 3.5 THEN '3.0 - 3.4'
+    WHEN gpa &gt;= 3.5 AND gpa &lt;= 4.0 THEN '3.5 - 4.0'
+  END
+ORDER BY GPABucket
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="GPABucket" DataSetColumn="GPABucket" />
+              <Mapping SourceColumn="StudentCount" DataSetColumn="StudentCount" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="GPADistribution" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="GPADistribution" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="GPADistribution">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="GPADistribution" msprop:Generator_RowClassName="GPADistributionRow" msprop:Generator_RowEvHandlerName="GPADistributionRowChangeEventHandler" msprop:Generator_RowDeletedName="GPADistributionRowDeleted" msprop:Generator_RowDeletingName="GPADistributionRowDeleting" msprop:Generator_RowEvArgName="GPADistributionRowChangeEvent" msprop:Generator_TablePropName="_GPADistribution" msprop:Generator_RowChangedName="GPADistributionRowChanged" msprop:Generator_UserTableName="GPADistribution" msprop:Generator_RowChangingName="GPADistributionRowChanging" msprop:Generator_TableClassName="GPADistributionDataTable" msprop:Generator_TableVarName="tableGPADistribution">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GPABucket" msdata:ReadOnly="true" msprop:Generator_UserColumnName="GPABucket" msprop:Generator_ColumnPropNameInTable="GPABucketColumn" msprop:Generator_ColumnPropNameInRow="GPABucket" msprop:Generator_ColumnVarNameInTable="columnGPABucket" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StudentCount" msdata:ReadOnly="true" msprop:Generator_UserColumnName="StudentCount" msprop:Generator_ColumnPropNameInTable="StudentCountColumn" msprop:Generator_ColumnPropNameInRow="StudentCount" msprop:Generator_ColumnVarNameInTable="columnStudentCount" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

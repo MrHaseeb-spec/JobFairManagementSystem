@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="OverallPercentage" targetNamespace="http://tempuri.org/OverallPercentage.xsd" xmlns:mstns="http://tempuri.org/OverallPercentage.xsd" xmlns="http://tempuri.org/OverallPercentage.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="JOBFAIRConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="JOBFAIRConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Project.Properties.Settings.GlobalReference.Default.JOBFAIRConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OverallPercentageTableAdapter" GeneratorDataComponentClassName="OverallPercentageTableAdapter" Name="OverallPercentage" UserDataComponentName="OverallPercentageTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="JOBFAIRConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT 
+    CAST(COUNT(DISTINCT CASE WHEN HO.finalStatus = 'Hired' THEN A.studentId END) AS FLOAT) / 
+    NULLIF(COUNT(DISTINCT A.studentId), 0) * 100 AS PlacementPercentage
+FROM 
+    APPLICATION A
+JOIN 
+    INTERVIEW I ON A.applicationId = I.applicationId
+LEFT JOIN 
+    HIRING_OUTCOME HO ON I.interviewId = HO.interviewId;</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PlacementPercentage" DataSetColumn="PlacementPercentage" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="OverallPercentage" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="OverallPercentage" msprop:Generator_DataSetName="OverallPercentage">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OverallPercentage" msprop:Generator_RowEvHandlerName="OverallPercentageRowChangeEventHandler" msprop:Generator_RowDeletedName="OverallPercentageRowDeleted" msprop:Generator_RowDeletingName="OverallPercentageRowDeleting" msprop:Generator_RowEvArgName="OverallPercentageRowChangeEvent" msprop:Generator_TablePropName="_OverallPercentage" msprop:Generator_RowChangedName="OverallPercentageRowChanged" msprop:Generator_RowChangingName="OverallPercentageRowChanging" msprop:Generator_TableClassName="OverallPercentageDataTable" msprop:Generator_RowClassName="OverallPercentageRow" msprop:Generator_TableVarName="tableOverallPercentage" msprop:Generator_UserTableName="OverallPercentage">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PlacementPercentage" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="PlacementPercentage" msprop:Generator_ColumnPropNameInTable="PlacementPercentageColumn" msprop:Generator_ColumnVarNameInTable="columnPlacementPercentage" msprop:Generator_UserColumnName="PlacementPercentage" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
