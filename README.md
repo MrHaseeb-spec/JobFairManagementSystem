@@ -3,8 +3,8 @@
 A comprehensive desktop application developed using **C# WinForms** and **SQL Server**, designed to manage university job fairs by connecting students, recruiters, booth coordinators, and administrators.
 
 ## 👥 Team Members
-- Abdul Haseeb (23i-3077)
-- Saad Ahmad (23i-3076)
+- Abdul Haseeb
+- Saad Ahmad
 
 ## 🚀 Features
 
